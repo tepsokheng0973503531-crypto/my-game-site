@@ -1,27 +1,31 @@
 <!DOCTYPE html>
-<html>
+<html lang="km">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Click Game</title>
 <style>
 body{margin:0;background:#168de2;font-family:Arial;text-align:center;color:white}
-.box{margin:70px auto;padding:30px;max-width:500px;background:#ffffff33;border-radius:25px}
-button{border:0;border-radius:50%;width:260px;height:260px;background:#ffd21c;font-size:30px;font-weight:bold}
-.reset{width:auto;height:auto;border-radius:10px;padding:12px 25px;margin-top:20px}
+.box{max-width:500px;margin:60px auto;padding:35px;background:#ffffff33;border-radius:25px}
+h1{font-size:42px}
+#btn{width:280px;height:280px;border:0;border-radius:50%;background:#ffd21c;font-size:30px;font-weight:bold;cursor:pointer}
+#reset{margin-top:25px;padding:12px 30px;border:0;border-radius:10px;font-size:18px}
 </style>
 </head>
 <body>
 <div class="box">
 <h1>🎮 CLICK ME!</h1>
+<h2>ចុចប៊ូតុង ដើម្បីរកពិន្ទុ</h2>
 <h2>Score: <span id="score">0</span></h2>
-<button onclick="clickMe()">CLICK ME!</button><br>
-<button class="reset" onclick="score=0;show()">🔄 Reset</button>
+<button id="btn">CLICK ME!</button><br>
+<button id="reset">🔄 Reset</button>
 </div>
 
 <script>
 let score=0;
-function clickMe(){score++;show()}
-function show(){document.getElementById("score").textContent=score}
+btn.onclick=()=>score++,scoreEl.textContent=score;
+reset.onclick=()=>score=0,scoreEl.textContent=0;
+const scoreEl=document.getElementById("score");
 </script>
 </body>
 </html>
