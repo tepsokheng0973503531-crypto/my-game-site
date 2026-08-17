@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+[8/17/2026 4:42 AM] សុខហេង👮🇰🇭: <!DOCTYPE html>
 <html lang="km">
 <head>
   <meta charset="UTF-8">
@@ -100,6 +100,132 @@
     function resetGame() {
       score = 0;
       document.getElementById("score").textContent = score;
+    }
+  </script>
+
+</body>
+</html>
+[8/17/2026 5:03 AM] សុខហេង👮🇰🇭: score = 0;
+      time = 30;
+      playing = true;
+
+      document.getElementById("score").textContent = score;
+      document.getElementById("time").textContent = time;
+      document.getElementById("message").textContent =
+        "🔥 ចាប់ផ្តើម! ចុចឱ្យលឿន!";
+
+      moveButton();
+
+      timer = setInterval(function() {
+
+        time--;
+
+        document.getElementById("time").textContent = time;
+
+        if (time <= 0) {
+          endGame();
+        }
+
+      }, 1000);
+    }
+
+    function clickGame() {
+
+      if (!playing) return;
+
+      score++;
+
+      document.getElementById("score").textContent = score;
+
+      showEffect();
+
+      moveButton();
+
+      if (score > best) {
+        best = score;
+
+        localStorage.setItem("clickBest", best);
+
+        document.getElementById("best").textContent = best;
+      }
+    }
+
+    function moveButton() {
+
+      const maxX = arena.clientWidth - button.offsetWidth;
+      const maxY = arena.clientHeight - button.offsetHeight;
+
+      const x = Math.random() * maxX;
+      const y = Math.random() * maxY;
+
+      button.style.left = x + "px";
+      button.style.top = y + "px";
+    }
+
+    function showEffect() {
+
+      const effect = document.createElement("div");
+
+      effect.className = "pop";
+      effect.textContent = "+1";
+
+      const x = button.offsetLeft + button.offsetWidth / 2;
+      const y = button.offsetTop + 20;
+
+      effect.style.left = x + "px";
+      effect.style.top = y + "px";
+
+      arena.appendChild(effect);
+
+      setTimeout(function() {
+        effect.remove();
+      }, 700);
+    }
+
+    function endGame() {
+
+      clearInterval(timer);
+
+      playing = false;
+
+      document.getElementById("message").textContent =
+        "🏁 ចប់ហើយ! Score របស់បងគឺ " + score + "!";
+
+      button.style.left =
+        (arena.clientWidth / 2 - button.offsetWidth / 2) + "px";
+
+      button.style.top =
+        (arena.clientHeight / 2 - button.offsetHeight / 2) + "px";
+    }
+
+    function resetGame() {
+
+      clearInterval(timer);
+
+      playing = false;
+
+      score = 0;
+      time = 30;
+
+      document.getElementById("score").textContent = 0;
+      document.getElementById("time").textContent = 30;
+
+      document.getElementById("message").textContent =
+        "ចុច START ដើម្បីចាប់ផ្តើម!";
+
+      button.style.left =
+        (arena.clientWidth / 2 - button.offsetWidth / 2) + "px";
+
+      button.style.top =
+        (arena.clientHeight / 2 - button.offsetHeight / 2) + "px";
+    }
+
+    resetGame();
+
+  </script>
+
+</body>
+</html>
     }
   </script>
 
