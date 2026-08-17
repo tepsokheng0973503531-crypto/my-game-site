@@ -1,51 +1,27 @@
-scoreEl.textContent = score;
-  levelEl.textContent = level;
-  timeEl.textContent = time;
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Click Game</title>
+<style>
+body{margin:0;background:#168de2;font-family:Arial;text-align:center;color:white}
+.box{margin:70px auto;padding:30px;max-width:500px;background:#ffffff33;border-radius:25px}
+button{border:0;border-radius:50%;width:260px;height:260px;background:#ffd21c;font-size:30px;font-weight:bold}
+.reset{width:auto;height:auto;border-radius:10px;padding:12px 25px;margin-top:20px}
+</style>
+</head>
+<body>
+<div class="box">
+<h1>🎮 CLICK ME!</h1>
+<h2>Score: <span id="score">0</span></h2>
+<button onclick="clickMe()">CLICK ME!</button><br>
+<button class="reset" onclick="score=0;show()">🔄 Reset</button>
+</div>
 
-  clickBtn.textContent = "CLICK ME!";
-  messageEl.textContent = "ចាប់ផ្ដើមលេង! 🎯";
-}
-
-function playSound() {
-
-  try {
-
-    const audioContext =
-      new (window.AudioContext ||
-      window.webkitAudioContext)();
-
-    const oscillator =
-      audioContext.createOscillator();
-
-    const gain =
-      audioContext.createGain();
-
-    oscillator.connect(gain);
-    gain.connect(audioContext.destination);
-
-    oscillator.frequency.value = 600;
-
-    gain.gain.setValueAtTime(
-      0.08,
-      audioContext.currentTime
-    );
-
-    gain.gain.exponentialRampToValueAtTime(
-      0.001,
-      audioContext.currentTime + 0.08
-    );
-
-    oscillator.start();
-
-    oscillator.stop(
-      audioContext.currentTime + 0.08
-    );
-
-  } catch (e) {}
-
-}
-
+<script>
+let score=0;
+function clickMe(){score++;show()}
+function show(){document.getElementById("score").textContent=score}
 </script>
-
 </body>
 </html>
